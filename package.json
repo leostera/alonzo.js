@@ -1,0 +1,12 @@
+{
+  "name": "alonzo.js",
+  "version": "0.1.0",
+  "description": "λ calculus in Javascript",
+  "main": "index.js",
+  "repository": {
+    "url": "git@github.com:ostera/alonzo.js.git",
+    "type": "git"
+  },
+  "author": "Leandro Ostera <leandro@ostera.io>",
+  "license": "MIT"
+}
