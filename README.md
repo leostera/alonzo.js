@@ -2,7 +2,7 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg" align="right" height="100" />
 
-> λ calculus
+> λ calculus in Javascript
 
 [![Travis-CI](https://api.travis-ci.org/ostera/alonzo.js.svg)](https://travis-ci.org/ostera/alonzo.js)
 [![Codecov branch](https://codecov.io/gh/ostera/alonzo.js/master.svg)](https://codecov.io/gh/ostera/alonzo.js)
