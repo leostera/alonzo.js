@@ -12,7 +12,7 @@ const True  = fst
 const False = snd
 const cond  = pair
 
-const not = x => apply(apply(False))(True)
+const not = x => y => apply(apply(False))(True)
 const and = x => y => apply(apply(x)(y))(False)
 
 export {
