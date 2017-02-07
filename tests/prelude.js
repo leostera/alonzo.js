@@ -36,3 +36,15 @@ test(`pair`, ({ok, end}) => {
   end()
 
 })
+
+test(`not`, ({ok, end}) => {
+
+  ok( λ.not( λ.True ) === λ.False ,
+    `λ.not negates true to false` )
+
+  ok( λ.not( λ.False ) === λ.True ,
+    `λ.not negates false to true` )
+
+  end()
+
+})
