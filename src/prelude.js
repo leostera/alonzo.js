@@ -73,7 +73,11 @@ const and = x => y => cond(y)(False)(x)
  */
 const or = x => y => cond(True)(y)(x)
 
-const Y = f => ( s => f(s(s)) )( s => x => f(s(s))(x) )
+/*
+ * Fixed-point combinator
+ */
+const y = f => ( s => f(s(s)) )( s => x => f(s(s))(x) )
+const y2 = f => ( s => f(s(s)) )( s => x => y => f(s(s))(x)(y) )
 
 export {
   False,
@@ -89,5 +93,6 @@ export {
   pair,
   self,
   snd,
-  Y,
+  y,
+  y2,
 }
