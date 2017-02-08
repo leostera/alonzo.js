@@ -73,7 +73,7 @@ const and = x => y => cond(y)(False)(x)
  */
 const or = x => y => cond(True)(y)(x)
 
-const Y = f => ( s => f(s(s)) )( s => f(s(s)) )
+const Y = f => ( s => f(s(s)) )( s => x => f(s(s))(x) )
 
 export {
   False,
