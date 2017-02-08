@@ -6,7 +6,7 @@ const log = f => x => v => (console.log(`${f.name}(${x}) = ${v}`), v)
  * Handy to wrap interact with all function applications,
  * like we're doing here with log.
  */
-const apply = f => x => log(f)(x)(f(x))
+const apply = f => x => f(x) //log(f)(x)(f(x))
 
 /*
  * A self application of a function

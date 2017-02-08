@@ -15,9 +15,6 @@ test(`zero`, ({ok, end}) => {
 
 test(`succ`, ({ok, end}) => {
 
-  ok( λ.succ( λ.id ) === λ.id,
-    `λ.self will apply a function to itself` )
-
   end()
 
 })

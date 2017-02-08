@@ -80,16 +80,16 @@ test(`and`, ({ok, end}) => {
 
 test(`or`, ({ok, end}) => {
 
-  ok( λ.or( λ.True )( λ.False ) === λ.True,
+  ok( λ.apply( λ.apply( λ.or )( λ.True ) )( λ.False ) === λ.True,
     `λ.or true false is true` )
 
-  ok( λ.or( λ.False )( λ.True ) === λ.True,
+  ok( λ.apply( λ.apply( λ.or )( λ.False ) )( λ.True ) === λ.True,
     `λ.or false true is true` )
 
-  ok( λ.or( λ.False )( λ.False ) === λ.False,
+  ok( λ.apply( λ.apply( λ.or )( λ.False ) )( λ.False ) === λ.False,
     `λ.or false false is false` )
 
-  ok( λ.or( λ.True )( λ.True ) === λ.True,
+  ok( λ.apply( λ.apply( λ.or )( λ.True ) )( λ.True ) === λ.True,
     `λ.or true true is true` )
 
   end()
