@@ -1,13 +1,13 @@
 import {
   id,
-  apply,
+  fst,
 } from './prelude'
 
 const zero = id
 
-const succ = n => s => apply(apply(apply(s)(False))(n))(zero)
+const succ = n => s => s(False)(n)(zero)
 
-const one = apply(succ)(zero)
+const one = succ(zero)
 
 export {
   zero,
