@@ -33,7 +33,7 @@ test(`id`, ({ok, end}) => {
 
 test(`pair`, ({ok, end}) => {
 
-  const pair = λ.apply( λ.apply( λ.pair )( λ.id ) )( λ.apply )
+  const pair = λ.pair( λ.id )( λ.apply )
 
   ok( typeof pair === 'function',
     `λ.pair builds a function` )

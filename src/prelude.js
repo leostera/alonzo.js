@@ -11,7 +11,7 @@ const apply = f => x => f(x) //log(f)(x)(f(x))
 /*
  * A self application of a function
  */
-const self = f => apply(f)(f)
+const self = f => f(f)
 
 /*
  * `id` returns exactly what you pass it
@@ -26,13 +26,13 @@ const id = x => x
  * this product type) you can extract the first or second value
  * from a pair built with `pair`
  */
-const pair = a => b => f => apply(apply(f)(a))(b)
+const pair = a => b => f => f(a)(b)
 const fst  = a => b => a
 const snd  = a => b => b
 
 /*
  * As it turns out, building logical conditions with True and False
- * is the same as operating on a pair of any type of elements.
+ * is the same as operating with pairs.
  *
  * The correspondance is obvious when you consider that a pair has
  * always 2 elements, and there's always two boolean values: True,
@@ -51,7 +51,7 @@ const False = snd
  *  a) True: or the function fst, which will pick False here, or
  *  b) False: which is snd, and will pick True here!
  */
-const not = x => apply(apply(apply(cond)(False))(True))(x)
+const not = cond(False)(True)
 
 /*
  * `and` also buils a cond that chooses from it's options
@@ -61,7 +61,7 @@ const not = x => apply(apply(apply(cond)(False))(True))(x)
  *  So if `x` is True, then it will choose `y` and go on.
  *  If `x` is False, it will shortcircuit with a False.
  */
-const and = x => y => apply(apply(apply(cond)(y))(False))(x)
+const and = x => y => cond(y)(False)(x)
 
 /*
  * `or` also buils a cond that chooses from it's options
@@ -71,7 +71,9 @@ const and = x => y => apply(apply(apply(cond)(y))(False))(x)
  *  So if `x` is True, then it will shortcircuit with True
  *  If `x` is False, it will return `y`
  */
-const or = x => y => apply(apply(apply(cond)(True))(y))(x)
+const or = x => y => cond(True)(y)(x)
+
+const Y = f => ( s => f(s(s)) )( s => f(s(s)) )
 
 export {
   False,
@@ -87,4 +89,5 @@ export {
   pair,
   self,
   snd,
+  Y,
 }
