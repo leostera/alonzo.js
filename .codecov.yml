@@ -1,0 +1,4 @@
+ignore:
+  - "src/index.js"
+  - "tests"
+  - "koans"

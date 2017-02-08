@@ -11,4 +11,4 @@ koans: run-koans
 test: run-tests
 
 run-%:
-	$(BIN_DIR)/babel-tape-runner $*/*
+	$(BIN_DIR)/babel-tape-runner $*/* | $(BIN_DIR)/colortape
