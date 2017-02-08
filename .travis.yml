@@ -12,6 +12,7 @@ cache:
     - node_modules
 
 script:
+  - make link
   - make test
 
 after_success:
