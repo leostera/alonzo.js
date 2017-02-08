@@ -19,6 +19,7 @@
     "babel-tape-runner": "^2.0.1",
     "codecov": "^1.0.1",
     "colortape": "^0.1.2",
+    "nyc": "^10.1.2",
     "tape": "^4.6.3"
   }
 }
