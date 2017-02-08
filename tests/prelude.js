@@ -15,7 +15,7 @@ test(`apply`, ({ok, end}) => {
 
 test(`self`, ({ok, end}) => {
 
-  ok( λ.self( λ.id ) === λ.id,
+  ok( λ.apply( λ.self )( λ.id ) === λ.id,
     `λ.self will apply a function to itself` )
 
   end()
@@ -33,15 +33,15 @@ test(`id`, ({ok, end}) => {
 
 test(`pair`, ({ok, end}) => {
 
-  const pair = λ.pair( λ.id )( λ.apply )
+  const pair = λ.apply( λ.apply( λ.pair )( λ.id ) )( λ.apply )
 
   ok( typeof pair === 'function',
     `λ.pair builds a function` )
 
-  ok( pair(λ.fst) === λ.id,
+  ok( λ.apply( pair )( λ.fst ) === λ.id,
     `λ.fst retrieves the first function` )
 
-  ok( pair(λ.snd) === λ.apply,
+  ok( λ.apply( pair )( λ.snd ) === λ.apply,
     `λ.snd retrieves the first function` )
 
   end()
@@ -50,10 +50,10 @@ test(`pair`, ({ok, end}) => {
 
 test(`not`, ({ok, end}) => {
 
-  ok( λ.not( λ.True ) === λ.False,
+  ok( λ.apply( λ.not )( λ.True ) === λ.False,
     `λ.not negates true to false` )
 
-  ok( λ.not( λ.False ) === λ.True,
+  ok( λ.apply( λ.not )( λ.False ) === λ.True,
     `λ.not negates false to true` )
 
   end()
@@ -62,16 +62,16 @@ test(`not`, ({ok, end}) => {
 
 test(`and`, ({ok, end}) => {
 
-  ok( λ.and( λ.True )( λ.False ) === λ.False,
+  ok( λ.apply( λ.apply( λ.and )( λ.True ) )( λ.False ) === λ.False,
     `λ.and true false is false` )
 
-  ok( λ.and( λ.False )( λ.True ) === λ.False,
+  ok( λ.apply( λ.apply( λ.and )( λ.False ) )( λ.True ) === λ.False,
     `λ.and false true is false` )
 
-  ok( λ.and( λ.False )( λ.False ) === λ.False,
+  ok( λ.apply( λ.apply( λ.and )( λ.False ) )( λ.False ) === λ.False,
     `λ.and false false is false` )
 
-  ok( λ.and( λ.True )( λ.True ) === λ.True,
+  ok( λ.apply( λ.apply( λ.and )( λ.True ) )( λ.True ) === λ.True,
     `λ.and true true is true` )
 
   end()
