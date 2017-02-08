@@ -4,6 +4,7 @@ import {
 } from './prelude'
 
 const zero = id
+const isZero = n => n(fst)
 
 const succ = n => s => s(False)(n)(zero)
 
