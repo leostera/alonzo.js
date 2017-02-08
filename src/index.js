@@ -1,2 +1,2 @@
 export * from './prelude'
-export * from './integers'
+export * from './numerals'
