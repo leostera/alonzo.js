@@ -13,6 +13,15 @@ test(`apply`, ({ok, end}) => {
 
 })
 
+test(`self`, ({ok, end}) => {
+
+  ok( λ.self( λ.id ) === λ.id,
+    `λ.self will apply a function to itself` )
+
+  end()
+
+})
+
 test(`id`, ({ok, end}) => {
 
   ok( λ.apply( λ.id )( 1 ) === 1,
