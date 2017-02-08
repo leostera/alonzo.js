@@ -1,5 +1,7 @@
 import { test } from 'tape'
 
+const focus = test.only
+
 import * as λ from 'alonzo'
 
 test(`apply`, ({ok, end}) => {
@@ -44,6 +46,24 @@ test(`not`, ({ok, end}) => {
 
   ok( λ.not( λ.False ) === λ.True,
     `λ.not negates false to true` )
+
+  end()
+
+})
+
+test(`and`, ({ok, end}) => {
+
+  ok( λ.and( λ.True )( λ.False ) === λ.False,
+    `λ.and true false is false` )
+
+  ok( λ.and( λ.False )( λ.True ) === λ.False,
+    `λ.and false true is false` )
+
+  ok( λ.and( λ.False )( λ.False ) === λ.False,
+    `λ.and false false is false` )
+
+  ok( λ.and( λ.True )( λ.True ) === λ.True,
+    `λ.and true true is true` )
 
   end()
 
