@@ -16,12 +16,11 @@ coverage: .nyc_output
 		> $(COVERAGE_DIR)/coverage.lcov
 
 .nyc_output:
-	make test
+	$(BIN_DIR)/nyc make test
 
 run-%:
-	$(BIN_DIR)/nyc \
-		$(BIN_DIR)/babel-tape-runner $*/* \
-		| $(BIN_DIR)/colortape
+	$(BIN_DIR)/babel-tape-runner $*/* \
+	| $(BIN_DIR)/colortape
 
 clean:
 	rm -rf $(COVERAGE_DIR) .nyc_output
