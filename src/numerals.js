@@ -4,6 +4,7 @@ import {
   snd,
   cond,
   False,
+  y2,
 } from './prelude'
 
 const zero = id
@@ -50,9 +51,8 @@ const three = succ(two)
  * This pointed recursion will eventually yield a `y` for which `isZero`
  * returns `True`, and breaks out of the loop by returning `x`.
  */
-const _add = f => x => y => cond(x)( f(f)(succ(x))(pred(y)) )(isZero(y))
-
-const add = _add(_add)
+const add = y2( f => x => y =>
+  (cond(() => x)( () => f(f)(succ(x))(pred(y)) )(isZero(y)))() )
 
 export {
   add,
