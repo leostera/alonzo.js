@@ -48,21 +48,3 @@ test(`not`, ({ok, end}) => {
   end()
 
 })
-
-test(`and`, ({ok, end}) => {
-
-  ok( λ.and( λ.True )( λ.False ) === λ.False,
-    `λ.and true false is false` )
-
-  ok( λ.and( λ.False )( λ.True ) === λ.False,
-    `λ.and false true is false` )
-
-  ok( λ.and( λ.False )( λ.False ) === λ.False,
-    `λ.and false false is false` )
-
-  ok( λ.and( λ.True )( λ.True ) === λ.True,
-    `λ.and true true is true` ) 
-
-  end()
-
-})
