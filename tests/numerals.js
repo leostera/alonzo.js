@@ -45,3 +45,12 @@ test(`succ/pred`, ({ok, end}) => {
   end()
 
 })
+
+test(`add`, ({ok, end}) => {
+
+  ok( λ.pred( λ.pred( λ.add( λ.one )( λ.one ) ) ) === λ.zero,
+    `λ.add takes two numbers and adds them together`)
+
+  end()
+
+})

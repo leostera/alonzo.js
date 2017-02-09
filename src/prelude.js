@@ -76,8 +76,8 @@ const or = x => y => cond(True)(y)(x)
 /*
  * Fixed-point combinator
  */
-const y  = f => ( s => f(s(s)) )( s => x => f(s(s))(x) )
-const y2 = f => ( s => f(s(s)) )( s => x => y => f(s(s))(x)(y) )
+const y  = f => ( g => f(g(g)) )( g => x => f(g(g))(x) )
+const y2 = f => ( g => f(g(g)) )( g => x => y => f(g(g))(x)(y) )
 
 export {
   False,
