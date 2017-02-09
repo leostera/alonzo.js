@@ -11,7 +11,7 @@ import {
 
 const zero = id
 
-const isZero = n => n(True)
+const isZero = n => n(fst)
 
 /*
  * Successor will build up a pair of [λ.True, rest],
@@ -54,16 +54,18 @@ const three = succ(two)
  * returns `True`, and breaks out of the loop by returning `x`.
  */
 const add = y2( f => x => y =>
-  (cond
+  cond
     ( () => x )
     ( () => f(f)(succ(x))(pred(y)) )
-    ( isZero(y) )) ) 
+    ( isZero(y) ) )
 
 export {
   add,
   isZero,
   zero,
   one,
+  two,
+  three,
   succ,
   pred,
 }
