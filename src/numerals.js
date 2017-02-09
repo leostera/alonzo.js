@@ -1,7 +1,9 @@
 import {
   id,
   True,
+  fst,
   snd,
+  pair,
   cond,
   False,
   y2,
@@ -21,7 +23,7 @@ const isZero = n => n(True)
  *
  * and so on.
  */
-const succ = n => s => s(False)(n)(zero)
+const succ = n => pair(False)(n)
 
 /*
  * Given how `succ` works, `pred` will take the tail of the
@@ -52,7 +54,10 @@ const three = succ(two)
  * returns `True`, and breaks out of the loop by returning `x`.
  */
 const add = y2( f => x => y =>
-  (cond(() => x)( () => f(f)(succ(x))(pred(y)) )(isZero(y)))() )
+  (cond
+    ( () => x )
+    ( () => f(f)(succ(x))(pred(y)) )
+    ( isZero(y) )) ) 
 
 export {
   add,
