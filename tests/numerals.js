@@ -75,6 +75,9 @@ test(`equals`, ({ok, end}) => {
   ok( λ.equals( λ.one )( λ.one ) === λ.True,
     `λ.equals returns true if the operands are equal`)
 
+  ok( λ.equals( λ.succ( λ.one ) )( λ.two ) === λ.True,
+    `λ.equals returns true if the operands are equal`)
+
   ok( λ.equals( λ.one )( λ.zero ) === λ.False,
     `λ.equals returns false if the operands are not equal`)
 
@@ -82,15 +85,28 @@ test(`equals`, ({ok, end}) => {
 
 })
 
-test(`mul`, ({ok, end}) => {
+focus(`mul`, ({ok, end}) => {
 
-  ok( λ.equals( λ.two )( λ.mul( λ.οne )( λ.two ) ) === λ.True,
-    `λ.mul-tiplying by one returns the other numeral`)
+  ok( λ.equals( λ.zero )( λ.mul( λ.zero )( λ.one ) ) === λ.True,
+    `λ.mult-iplying by zero on the left returns zero`)
 
-  const four = λ.succ( λ.three )
+  ok( λ.equals( λ.zero )( λ.mul( λ.one )( λ.zero ) ) === λ.True,
+    `λ.mult-iplying by zero on the right returns zero`)
 
-  ok( λ.equals( four )( λ.mul( λ.two )( λ.two ) ) === λ.True,
-    `λ.mul-tiplying 2 by 2 is 4`)
+  ok( λ.equals( λ.zero )( λ.mul( λ.zero )( λ.zero ) ) === λ.True,
+    `λ.mult-iplying zero by zero returns zero`)
+
+  ok( λ.equals( λ.two )( λ.mul( λ.one )( λ.two ) ) === λ.True,
+    `λ.mult-iplying by one on the left returns the second argument`)
+
+  ok( λ.equals( λ.two )( λ.mul( λ.two )( λ.one ) ) === λ.True,
+    `λ.mult-iplying by one on the right returns first argument`)
+
+  ok( λ.equals( λ.one )( λ.mul( λ.one )( λ.one ) ) === λ.True,
+    `λ.mult-iplying one by one returns one`)
+
+  ok( λ.equals( λ.succ(λ.three) )( λ.mul( λ.two )( λ.two ) ) === λ.True,
+    `λ.mult-iplying adds the first argument to itself second-argument times`) 
 
   end()
 

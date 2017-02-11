@@ -16,6 +16,25 @@ const zero = id
 const isZero = n => n(fst)
 
 /*
+ * equals three two
+ * equals two one
+ * equals one zero
+ * False
+ *
+ * equals two two
+ * equals one one
+ * equals zero zero
+ * True
+ */
+const equals = y2( f => x => y => cond
+    (() => True)
+    (() => cond(() => False)
+               (() => f(pred(x))(pred(y)))
+               (or(isZero(x))(isZero(y)))())
+    (and(isZero(x))(isZero(y)))())
+
+
+/*
  * Successor will build up a pair of [λ.True, rest],
  * where rest can be another pair or λ.zero, so that
  *
@@ -89,28 +108,11 @@ const sub = y2( f => x => y => cond
  * add two four
  * six
  */
-const mul = y2( f => x => y => cond
-  (() => zero)
-  (() => add(x)( f(x)(pred(y)) ))
-  (isZero(y))() )
-
-/*
- * equals three two
- * equals two one
- * equals one zero
- * False
- *
- * equals two two
- * equals one one
- * equals zero zero
- * True
- */
-const equals = y2( f => x => y => cond
-    (() => True)
-    (() => cond(() => False)
-               (() => f(pred(x))(pred(y)))
-               (or(isZero(x))(isZero(y)))())
-    (and(isZero(x))(isZero(y)))())
+const mul = y2( f => x => y => (
+  console.log(x,y,isZero(y) === True),
+  cond(() => zero)
+      (() => add(x)( f(x)(pred(y)) ))
+      (isZero(y))() ) )
 
 export {
   add,
