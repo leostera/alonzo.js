@@ -81,3 +81,17 @@ test(`equals`, ({ok, end}) => {
   end()
 
 })
+
+test(`mul`, ({ok, end}) => {
+
+  ok( λ.equals( λ.two )( λ.mul( λ.οne )( λ.two ) ) === λ.True,
+    `λ.mul-tiplying by one returns the other numeral`)
+
+  const four = λ.succ( λ.three )
+
+  ok( λ.equals( four )( λ.mul( λ.two )( λ.two ) ) === λ.True,
+    `λ.mul-tiplying 2 by 2 is 4`)
+
+  end()
+
+})
