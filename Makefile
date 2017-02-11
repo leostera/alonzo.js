@@ -1,7 +1,7 @@
-.PHONY: koans test coverage clean distclean link
+.PHONY: koans test coverage link
 
 COVERAGE_DIR = ./coverage
-BIN_DIR = ./node_modules/.bin
+BIN_DIR      = ./node_modules/.bin
 
 all: link
 
@@ -21,7 +21,7 @@ coverage: .nyc_output
 
 run-%:
 	$(BIN_DIR)/babel-tape-runner $*/* \
-	| $(BIN_DIR)/colortape
+		| $(BIN_DIR)/colortape
 
 clean:
 	rm -rf $(COVERAGE_DIR) .nyc_output
