@@ -1,12 +1,13 @@
-.PHONY: koans test coverage clean distclean
+.PHONY: koans test coverage clean distclean link
 
 COVERAGE_DIR = ./coverage
 BIN_DIR = ./node_modules/.bin
 
 all: link
 
-link: FORCE
-	cd node_modules && ln -fs ../src alonzo
+link: node_modules/alonzo
+node_modules/alonzo:
+	pushd node_modules && ln -sf ../src ./alonzo
 
 koans: run-koans
 test: run-tests
@@ -27,5 +28,3 @@ clean:
 
 distclean: clean
 	rm -rf node_modules
-
-FORCE:
