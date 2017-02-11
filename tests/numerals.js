@@ -51,6 +51,9 @@ test(`add`, ({ok, end}) => {
   ok( λ.pred( λ.pred( λ.add( λ.one )( λ.one ) ) ) === λ.zero,
     `λ.add takes two numbers and adds them together`)
 
+  ok( λ.pred( λ.pred( λ.add( λ.two )( λ.zero ) ) ) === λ.zero,
+    `λ.add-ing a number with zero returns the number`)
+
   end()
 
 })

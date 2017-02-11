@@ -55,8 +55,8 @@ const three = succ(two)
  */
 const add = y2( f => x => y => cond
   (() => x)
-  (() => f(f)(succ(x))(pred(y)))
-  (isZero(y)))
+  (() => f(succ(x))(pred(y)))
+  (isZero(y))() )
 
 export {
   add,
