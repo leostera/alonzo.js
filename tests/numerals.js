@@ -57,3 +57,15 @@ test(`add`, ({ok, end}) => {
   end()
 
 })
+
+test(`sub`, ({ok, end}) => {
+
+  ok( λ.sub( λ.one )( λ.one ) === λ.zero,
+    `λ.sub-stracting a number from itself returns zero`)
+
+  ok( λ.pred( λ.sub( λ.two )( λ.one ) ) === λ.zero,
+    `λ.sub takes two numbers and substracts the second from the first`)
+
+  end()
+
+})

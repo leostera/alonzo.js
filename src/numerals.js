@@ -58,13 +58,19 @@ const add = y2( f => x => y => cond
   (() => f(succ(x))(pred(y)))
   (isZero(y))() )
 
+const sub = y2( f => x => y => cond
+  (() => x)
+  (() => f(pred(x))(pred(y)))
+  (isZero(y))() )
+
 export {
   add,
   isZero,
-  zero,
   one,
-  two,
-  three,
-  succ,
   pred,
+  sub,
+  succ,
+  three,
+  two,
+  zero,
 }
