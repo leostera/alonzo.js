@@ -69,3 +69,15 @@ test(`sub`, ({ok, end}) => {
   end()
 
 })
+
+test(`equals`, ({ok, end}) => {
+
+  ok( λ.equals( λ.one )( λ.one ) === λ.True,
+    `λ.equals returns true if the operands are equal`)
+
+  ok( λ.equals( λ.one )( λ.zero ) === λ.False,
+    `λ.equals returns false if the operands are not equal`)
+
+  end()
+
+})

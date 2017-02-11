@@ -1,11 +1,13 @@
 import {
-  id,
-  True,
-  fst,
-  snd,
-  pair,
-  cond,
   False,
+  True,
+  and,
+  cond,
+  fst,
+  id,
+  or,
+  pair,
+  snd,
   y2,
 } from './prelude'
 
@@ -40,7 +42,7 @@ const two = succ(one)
 const three = succ(two)
 
 /*
- * Recursively add numbers:
+ * Recursively operate on church numerals:
  *
  * If `isZero(y)` returns `False`, then select the second branch
  * of the cond.
@@ -48,7 +50,7 @@ const three = succ(two)
  * If `isZero(y)` returns `True`, then select `x`
  *
  * The second branch calls the function `f` with itself`, and passes along
- * the successor of `x` and the predecesor of `y`.
+ * the new `x` and new `y`
  *
  * This pointed recursion will eventually yield a `y` for which `isZero`
  * returns `True`, and breaks out of the loop by returning `x`.
@@ -63,6 +65,13 @@ const sub = y2( f => x => y => cond
   (() => f(pred(x))(pred(y)))
   (isZero(y))() )
 
+const equals = y2( f => x => y => cond
+    (() => True)
+    (() => cond(() => False)
+               (() => f(pred(x))(pred(y)))
+               (or(isZero(x))(isZero(y)))())
+    (and(isZero(x))(isZero(y)))())
+
 export {
   add,
   isZero,
@@ -73,4 +82,5 @@ export {
   three,
   two,
   zero,
+  equals,
 }
