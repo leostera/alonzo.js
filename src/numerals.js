@@ -26,12 +26,12 @@ const isZero = n => n(fst)
  * equals zero zero
  * True
  */
-const equals = y2( f => x => y => cond
-    (() => True)
-    (() => cond(() => False)
-               (() => f(pred(x))(pred(y)))
-               (or(isZero(x))(isZero(y)))())
-    (and(isZero(x))(isZero(y)))())
+const equals = y2( f => x => y =>
+  cond(() => True)
+      (() => cond(() => False)
+                 (() => f(pred(x))(pred(y)))
+                 (or(isZero(x))(isZero(y)))())
+      (and(isZero(x))(isZero(y)))())
 
 
 /*
@@ -82,10 +82,10 @@ const three = succ(two)
  * add four zero
  * four
  */
-const add = y2( f => x => y => cond
-  (() => x)
-  (() => f(succ(x))(pred(y)))
-  (isZero(y))() )
+const add = y2( f => x => y =>
+  cond(() => x)
+      (() => f(succ(x))(pred(y)))
+      (isZero(y))() )
 
 /*
  * sub four two
@@ -93,10 +93,10 @@ const add = y2( f => x => y => cond
  * sub two zero
  * two
  */
-const sub = y2( f => x => y => cond
-  (() => x)
-  (() => f(pred(x))(pred(y)))
-  (isZero(y))() )
+const sub = y2( f => x => y =>
+  cond(() => x)
+      (() => f(pred(x))(pred(y)))
+      (isZero(y))() )
 
 /*
  * mul two three
@@ -111,6 +111,11 @@ const sub = y2( f => x => y => cond
 const mul = y2( f => x => y =>
   cond(() => zero)
       (() => add(x)( f(x)(pred(y)) ))
+      (isZero(y))() )
+
+const pow = y2( f => x => y =>
+  cond(() => one)
+      (() => mul(x)( f(x)(pred(y)) ))
       (isZero(y))() )
 
 export {
