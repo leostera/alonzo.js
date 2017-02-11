@@ -108,11 +108,10 @@ const sub = y2( f => x => y => cond
  * add two four
  * six
  */
-const mul = y2( f => x => y => (
-  console.log(x,y,isZero(y) === True),
+const mul = y2( f => x => y =>
   cond(() => zero)
       (() => add(x)( f(x)(pred(y)) ))
-      (isZero(y))() ) )
+      (isZero(y))() )
 
 export {
   add,

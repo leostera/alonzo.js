@@ -1,4 +1,4 @@
 ignore:
   - "src/index.js"
-  - "tests"
-  - "koans"
+  - "tests/**"
+  - "koans/**"

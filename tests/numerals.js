@@ -85,7 +85,7 @@ test(`equals`, ({ok, end}) => {
 
 })
 
-focus(`mul`, ({ok, end}) => {
+test(`mul`, ({ok, end}) => {
 
   ok( λ.equals( λ.zero )( λ.mul( λ.zero )( λ.one ) ) === λ.True,
     `λ.mult-iplying by zero on the left returns zero`)
