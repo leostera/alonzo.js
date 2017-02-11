@@ -108,26 +108,26 @@ const sub = y2( f => x => y =>
  * add two four
  * six
  */
-const mul = y2( f => x => y =>
-  cond(() => zero)
-      (() => add(x)( f(x)(pred(y)) ))
-      (isZero(y))() )
+const abstract_iterative_op = a => b => c =>
+  y2( f => x => y =>
+    cond(() => a)
+        (() => b(x)( f(x)(pred(y)) ))
+        (c(y))() )
 
-const pow = y2( f => x => y =>
-  cond(() => one)
-      (() => mul(x)( f(x)(pred(y)) ))
-      (isZero(y))() )
+const mul = abstract_iterative_op(zero)(add)(isZero)
+const pow = abstract_iterative_op(one)(mul)(isZero)
 
 export {
   add,
+  equals,
   isZero,
+  mul,
   one,
+  pow,
   pred,
   sub,
   succ,
   three,
   two,
   zero,
-  mul,
-  equals,
 }

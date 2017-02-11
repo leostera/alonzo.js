@@ -88,25 +88,47 @@ test(`equals`, ({ok, end}) => {
 test(`mul`, ({ok, end}) => {
 
   ok( λ.equals( λ.zero )( λ.mul( λ.zero )( λ.one ) ) === λ.True,
-    `λ.mult-iplying by zero on the left returns zero`)
+    `λ.mul-tiplying by zero on the left returns zero`)
 
   ok( λ.equals( λ.zero )( λ.mul( λ.one )( λ.zero ) ) === λ.True,
-    `λ.mult-iplying by zero on the right returns zero`)
+    `λ.mul-tiplying by zero on the right returns zero`)
 
   ok( λ.equals( λ.zero )( λ.mul( λ.zero )( λ.zero ) ) === λ.True,
-    `λ.mult-iplying zero by zero returns zero`)
+    `λ.mul-tiplying zero by zero returns zero`)
 
   ok( λ.equals( λ.two )( λ.mul( λ.one )( λ.two ) ) === λ.True,
-    `λ.mult-iplying by one on the left returns the second argument`)
+    `λ.mul-tiplying by one on the left returns the second argument`)
 
   ok( λ.equals( λ.two )( λ.mul( λ.two )( λ.one ) ) === λ.True,
-    `λ.mult-iplying by one on the right returns first argument`)
+    `λ.mul-tiplying by one on the right returns first argument`)
 
   ok( λ.equals( λ.one )( λ.mul( λ.one )( λ.one ) ) === λ.True,
-    `λ.mult-iplying one by one returns one`)
+    `λ.mul-tiplying one by one returns one`)
 
   ok( λ.equals( λ.succ(λ.three) )( λ.mul( λ.two )( λ.two ) ) === λ.True,
-    `λ.mult-iplying adds the first argument to itself second-argument times`) 
+    `λ.mul-tiplying adds the first argument to itself second-argument times`) 
+
+  end()
+
+})
+
+test(`pow`, ({ok, end}) => {
+
+  ok( λ.equals( λ.zero )( λ.pow( λ.zero )( λ.one ) ) === λ.True,
+    `λ.pow-ing to one returns the first argument`)
+
+  ok( λ.equals( λ.two )( λ.pow( λ.two )( λ.one ) ) === λ.True,
+    `λ.pow-ing to one returns the first argument`)
+
+  ok( λ.equals( λ.zero )( λ.pow( λ.zero )( λ.two ) ) === λ.True,
+    `λ.pow-ing zero to anything returns zero`)
+
+  ok( λ.equals( λ.succ(λ.three) )( λ.pow( λ.two )( λ.two ) ) === λ.True,
+    `λ.pow-ing multiples the first argument by itself second-argument times`)
+
+  const eight = λ.succ(λ.succ(λ.succ(λ.succ(λ.succ(λ.three)))))
+  ok( λ.equals( eight )( λ.pow( λ.two )( λ.three ) ) === λ.True,
+    `λ.pow-ing multiples the first argument by itself second-argument times`)
 
   end()
 
