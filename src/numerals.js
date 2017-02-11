@@ -117,6 +117,16 @@ const abstract_iterative_op = a => b => c =>
 const mul = abstract_iterative_op(zero)(add)(isZero)
 const pow = abstract_iterative_op(one)(mul)(isZero)
 
+const div = y2( f => x => y =>
+  cond(() => zero)
+      (() => cond(() => zero)
+                 (() => succ(f(sub(x)(y)))(y))
+                 (greater(y)(x))() )
+      (isZero(y))() )
+
+const lesser  = x => y => isZero(sub(x)(y))
+const greater = x => y => not(lesser(x)(y))
+
 export {
   add,
   equals,
